@@ -6,4 +6,16 @@
     android:title="@string/prism_lockscreen_dashboard_title">
 
 
+    <PreferenceCategory
+        android:key="lockscreen_gestures_category"
+        android:title="@string/lockscreen_gestures_category">
+
+        <!-- Lockscreen D2S -->
+        <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="double_tap_sleep_lockscreen"
+            android:title="@string/double_tap_to_sleep_lockscreen_title"
+            android:summary="@string/double_tap_to_sleep_lockscreen_summary"
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
 </PreferenceScreen>
