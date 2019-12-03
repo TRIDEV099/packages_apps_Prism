@@ -6,4 +6,15 @@
     android:title="@string/prism_qs_dashboard_title">
 
 
+    <PreferenceCategory
+        android:key="notifications_sounds_vibration_category"
+        android:title="@string/notifications_sounds_vibration_category">
+
+        <!-- Annoying Notifications -->
+        <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="notification_sound_vib_screen_on"
+            android:title="@string/notification_sound_vib_screen_on_title"
+            android:summary="@string/notification_sound_vib_screen_on_summary"
+            android:defaultValue="true" />
+    </PreferenceCategory>
 </PreferenceScreen>

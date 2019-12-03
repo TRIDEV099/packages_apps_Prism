@@ -89,4 +89,11 @@
     <!-- Allow power menu on secure lockscreen -->
     <string name="power_menu_lock_screen_secure_title">Power menu</string>
     <string name="power_menu_lock_screen_secure_summary">Allow accessing power menu on secure lockscreen</string>
+
+    <!-- Notifications Category -->
+    <string name="notifications_sounds_vibration_category">Sounds &amp; vibration</string>
+
+    <!-- Annoying Notifications -->
+    <string name="notification_sound_vib_screen_on_title">Notification sound when screen is on</string>
+    <string name="notification_sound_vib_screen_on_summary">Play sound and vibration for notifications when screen is on</string>
 </resources>
