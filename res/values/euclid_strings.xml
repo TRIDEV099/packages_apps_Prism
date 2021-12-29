@@ -132,6 +132,7 @@
     <string name="menu_hide_overlay">Hide overlay</string>
 
     <string name="themes_audio_category">Audio</string>
+    <string name="themes_fonts_category">Fonts</string>
 
     <!-- Carrier name on lockscreen -->
     <string name="lockscreen_show_carrier_title">Carrier name</string>
@@ -174,4 +175,8 @@
     <!-- Disable QS -->
     <string name="quick_settings_secure_lock_screen_title">QS on lock screen</string>
     <string name="quick_settings_secure_lock_screen_summary">Allow swipe down on lock screen to view Quick Settings</string>
+
+    <!-- Font style / Icon pack -->
+    <string name="theme_customization_font_title">Font style</string>
+    <string name="theme_customization_font_summary">Set system font style</string>
 </resources>

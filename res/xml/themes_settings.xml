@@ -26,4 +26,17 @@
             android:defaultValue="/product/media/audio/ui/Unlock.ogg" />
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="themes_fonts_category"
+        android:title="@string/themes_fonts_category">
+
+    <!-- Font style -->
+    <Preference
+        android:key="android.theme.customization.fonts"
+        android:title="@string/theme_customization_font_title"
+        android:summary="@string/theme_customization_font_summary"
+        android:fragment="com.prism.settings.fragments.themes.FontsPicker"/>
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
