@@ -21,6 +21,7 @@
 
     <!-- Power Menu Category -->
     <string name="power_menu_interface_category">Interface</string>
+    <string name="power_menu_lock_screen_category">Lock screen</string>
 
     <!-- Advanced restart -->
     <string name="global_actions_advanced_reboot_title">Advanced restart</string>
@@ -84,4 +85,8 @@
     <!-- Ignore window secure flags -->
     <string name="miscellaneous_ignore_window_secure_title">Ignore window secure flags</string>
     <string name="miscellaneous_ignore_window_secure_summary">Remove restrictions on screenshots and screen recordings for all applications, potentially risking privacy leaks</string>
+
+    <!-- Allow power menu on secure lockscreen -->
+    <string name="power_menu_lock_screen_secure_title">Power menu</string>
+    <string name="power_menu_lock_screen_secure_summary">Allow accessing power menu on secure lockscreen</string>
 </resources>
