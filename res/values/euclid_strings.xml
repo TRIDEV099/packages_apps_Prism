@@ -28,6 +28,7 @@
 
     <!-- Miscellaneous Category -->
     <string name="miscellaneous_spoofing_category">Spoofing</string>
+    <string name="miscellaneous_developer_options_category">Developer options</string>
 
     <!-- Spoofing -->
     <string name="spoofing_title">Component spoofing</string>
@@ -75,4 +76,8 @@
     <!-- SttBar Brightness control -->
     <string name="status_bar_brightness_control_title">Brightness control</string>
     <string name="status_bar_brightness_control_summary">Adjust brightness by swiping across the status bar</string>
+
+    <!-- Allow application downgrade -->
+    <string name="miscellaneous_app_downgrade_title">Allow application downgrade</string>
+    <string name="miscellaneous_app_downgrade_summary">Allow downgrading system applications, which may result in crashes and data loss</string>
 </resources>
