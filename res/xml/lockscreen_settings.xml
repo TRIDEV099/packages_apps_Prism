@@ -10,11 +10,19 @@
         android:title="@string/lock_screen_interface_category">
 
         <!-- Carrier name on lockscreen -->
-        <com.hertzify.settings.preferences.SystemSettingSwitchPreference
+        <com.android.settings.preferences.SystemSettingSwitchPreference
             android:key="lockscreen_show_carrier"
             android:title="@string/lockscreen_show_carrier_title"
             android:summary="@string/lockscreen_show_carrier_summary"
             android:defaultValue="true" />
+
+        <!-- Wake on plug -->
+        <com.android.settings.preferences.SystemSettingSwitchPreference
+           android:key="wake_when_plugged_or_unplugged"
+           android:title="@string/wake_when_plugged_or_unplugged_title"
+           android:summary="@string/wake_when_plugged_or_unplugged_summary"
+           android:defaultValue="false" />
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="lockscreen_gestures_category"
