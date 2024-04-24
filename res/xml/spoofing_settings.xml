@@ -5,5 +5,73 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:title="@string/prism_spoofing_dashboard_title">
 
+    <PreferenceCategory
+        android:key="spoofing_system_wide_category"
+        android:title="@string/spoofing_system_wide_category">
 
+        <!-- GMS spoof -->
+        <com.android.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pp.gms"
+            android:title="@string/gms_spoof_title"
+            android:summary="@string/gms_spoof_summary"
+            android:defaultValue="true" />
+
+        <Preference
+            android:key="show_pif_properties"
+            android:title="@string/show_pif_properties_title"
+            android:summary="@string/show_pif_properties_summary"
+            android:dependency="persist.sys.pp.gms" />
+
+        <Preference
+            android:key="update_pif_json"
+            android:title="@string/update_pif_json_title"
+            android:summary="@string/update_pif_json_summary"
+            android:dependency="persist.sys.pp.gms" />
+
+        <Preference
+            android:key="pif_json_file_preference"
+            android:title="@string/pif_spoofing_title"
+            android:summary="@string/pif_spoofing_summary"
+            android:dependency="persist.sys.pp.gms" />
+
+        <!-- Pixel props -->
+        <com.android.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pp"
+            android:title="@string/spoofing_pixel_props_title"
+            android:summary="@string/spoofing_pixel_props_summary"
+            android:defaultValue="true" />
+
+        <!-- Tensor features -->
+        <com.android.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pp.tensor"
+            android:title="@string/tensor_spoof_title"
+            android:summary="@string/tensor_spoof_summary"
+            android:defaultValue="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="spoofing_app_specific_category"
+        android:title="@string/spoofing_app_specific_category">
+
+        <!-- Google App -->
+        <com.android.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pp.qsb"
+            android:title="@string/spoofing_qsb_title"
+            android:summary="@string/spoofing_qsb_summary"
+            android:defaultValue="false" />
+
+        <!-- Google Photos -->
+        <com.android.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pp.photos"
+            android:title="@string/spoofing_photos_title"
+            android:summary="@string/spoofing_photos_summary"
+            android:defaultValue="true" />
+
+        <!-- Games FPS -->
+        <com.android.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pp.games"
+            android:title="@string/gameprops_title"
+            android:summary="@string/gameprops_summary"
+            android:defaultValue="true" />
+    </PreferenceCategory>
 </PreferenceScreen>
