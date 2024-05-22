@@ -8,9 +8,12 @@ package com.prism.settings.fragments.lockscreen;
 import android.content.Context;
 import android.content.ContentResolver;
 import android.content.res.Resources;
+import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
 
 import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceChangeListener;
+import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
@@ -26,6 +29,11 @@ public class Lockscreen extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
     private static final String TAG = "Lockscreen";
+    private static final String KEY_FINGERPRINT_CATEGORY = "lock_screen_fingerprint_category";
+    private static final String KEY_AUTHENTICATION_SUCCESS = "fp_success_vibrate";
+    private static final String KEY_AUTHENTICATION_ERROR = "fp_error_vibrate";
+
+    private PreferenceCategory mFingerprintCategory;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,8 +42,16 @@ public class Lockscreen extends SettingsPreferenceFragment implements
 
         final Context context = requireContext();
         final ContentResolver resolver = context.getContentResolver();
-        final PreferenceScreen screen = getPreferenceScreen();
+        final PreferenceScreen prefScreen = getPreferenceScreen();
         final Resources res = context.getResources();
+
+        mFingerprintCategory = (PreferenceCategory) findPreference(KEY_FINGERPRINT_CATEGORY);
+
+        FingerprintManager fingerprintManager = (FingerprintManager)
+                getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
+        if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
+            prefScreen.removePreference(mFingerprintCategory);
+        }
 
         requireActivity().setTitle(R.string.prism_lockscreen_dashboard_title);
     }
@@ -58,6 +74,14 @@ public class Lockscreen extends SettingsPreferenceFragment implements
             public List<String> getNonIndexableKeys(Context context) {
                 List<String> keys = super.getNonIndexableKeys(context);
                 final Resources res = context.getResources();
+
+                FingerprintManager fingerprintManager = (FingerprintManager)
+                    context.getSystemService(Context.FINGERPRINT_SERVICE);
+
+                if (fingerprintManager == null || !fingerprintManager.isHardwareDetected()) {
+                    keys.add(KEY_AUTHENTICATION_SUCCESS);
+                    keys.add(KEY_AUTHENTICATION_ERROR);
+                }
                 return keys;
             }
         };
