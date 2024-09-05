@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.UserHandle;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.res.Resources;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -34,11 +35,23 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Collections;
 
+import com.android.settings.preferences.GlobalSettingListPreference;
+import com.prism.settings.utils.SystemUtils;
 
 public class Themes extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
 
+    private static final String KEY_LOCK_SOUND = "lock_sound";
+    private static final String KEY_UNLOCK_SOUND = "unlock_sound";
+
+    private GlobalSettingListPreference mLockSound;
+    private GlobalSettingListPreference mUnlockSound;
+
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mLockSound || preference == mUnlockSound) {
+            SystemUtils.showSystemUiRestartDialog(context);
+            return true;
+        }
         return false;
     }
 
@@ -52,6 +65,11 @@ public class Themes extends SettingsPreferenceFragment implements Preference.OnP
         setPreferencesFromResource(R.xml.themes_settings, rootKey);
 
         getActivity().setTitle(R.string.prism_themes_dashboard_title);
+
+        mLockSound = (GlobalSettingListPreference) findPreference(KEY_LOCK_SOUND);
+        mLockSound.setOnPreferenceChangeListener(this);
+        mUnlockSound = (GlobalSettingListPreference) findPreference(KEY_UNLOCK_SOUND);
+        mUnlockSound.setOnPreferenceChangeListener(this);
 
     }
 }
