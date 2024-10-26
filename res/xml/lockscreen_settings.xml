@@ -5,6 +5,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:title="@string/prism_lockscreen_dashboard_title">
 
+    <PreferenceCategory
+        android:key="lock_screen_interface_category"
+        android:title="@string/lock_screen_interface_category">
+
+        <!-- Carrier name on lockscreen -->
+        <com.hertzify.settings.preferences.SystemSettingSwitchPreference
+            android:key="lockscreen_show_carrier"
+            android:title="@string/lockscreen_show_carrier_title"
+            android:summary="@string/lockscreen_show_carrier_summary"
+            android:defaultValue="true" />
 
     <PreferenceCategory
         android:key="lockscreen_gestures_category"
