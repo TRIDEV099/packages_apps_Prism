@@ -28,7 +28,14 @@
             android:summary="@string/hide_developer_status_summary"
             android:fragment="com.prism.settings.fragments.system.HideDeveloperStatusSettings"
             settings:controller="com.prism.settings.fragments.system.HideDeveloperStatusPreferenceController" />
-            
+
+        <!-- Hide applist -->
+        <Preference
+            android:key="hide_applist_setting"
+            android:title="@string/hide_applist_title"
+            android:summary="@string/hide_applist_summary"
+            android:fragment="com.prism.settings.fragments.system.HideAppListSettings" />
+
         <!-- Spoof current storage encryption status -->
         <com.android.settings.preferences.SystemSettingSwitchPreference
             android:key="spoof_storage_encryption_status"
