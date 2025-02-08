@@ -21,6 +21,14 @@
             android:key="miscellaneous_spoofing_category"
             android:title="@string/miscellaneous_spoofing_category">
 
+        <!-- Hide developer status -->
+        <Preference
+            android:key="hide_developer_status_settings"
+            android:title="@string/hide_developer_status_title"
+            android:summary="@string/hide_developer_status_summary"
+            android:fragment="com.prism.settings.fragments.system.HideDeveloperStatusSettings"
+            settings:controller="com.prism.settings.fragments.system.HideDeveloperStatusPreferenceController" />
+            
         <!-- Spoof current storage encryption status -->
         <com.android.settings.preferences.SystemSettingSwitchPreference
             android:key="spoof_storage_encryption_status"
