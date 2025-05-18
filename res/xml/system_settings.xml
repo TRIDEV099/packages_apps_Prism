@@ -15,6 +15,18 @@
             android:title="@string/global_actions_advanced_reboot_title"
             android:summary="@string/global_actions_advanced_reboot_summary"
             android:defaultValue="false" />
+    </PreferenceCategory>
+
+        <PreferenceCategory
+            android:key="miscellaneous_spoofing_category"
+            android:title="@string/miscellaneous_spoofing_category">
+
+        <!-- Spoof current storage encryption status -->
+        <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="spoof_storage_encryption_status"
+            android:title="@string/spoof_storage_encryption_status_title"
+            android:summary="@string/spoof_storage_encryption_status_summary"
+            android:defaultValue="false"/>
 
     </PreferenceCategory>
 
