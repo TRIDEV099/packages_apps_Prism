@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.UserHandle;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.res.Resources;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -33,10 +34,21 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Collections;
 
+import com.prism.settings.utils.SystemUtils;
+
 public class QuickSettings extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
+
+
+    private static final String KEY_QS_COMPACT_PLAYER  = "qs_compact_media_player_mode";
+
+    private Preference mQsCompactPlayer;
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mQsCompactPlayer) {
+            SystemUtils.showSystemUiRestartDialog(context);
+            return true;
+        }
         return false;
     }
 
@@ -50,6 +62,9 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
         setPreferencesFromResource(R.xml.quicksettings_settings, rootKey);
 
         getActivity().setTitle(R.string.prism_qs_dashboard_title);
+
+        mQsCompactPlayer = (Preference) findPreference(KEY_QS_COMPACT_PLAYER);
+        mQsCompactPlayer.setOnPreferenceChangeListener(this);
 
     }
 }
