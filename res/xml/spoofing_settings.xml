@@ -73,5 +73,10 @@
             android:title="@string/gameprops_title"
             android:summary="@string/gameprops_summary"
             android:defaultValue="true" />
+
+        <Preference
+            android:key="game_props_json_file_preference"
+            android:title="@string/gameprops_load_json_title"
+            android:summary="@string/gameprops_load_json_summary" />
     </PreferenceCategory>
 </PreferenceScreen>
