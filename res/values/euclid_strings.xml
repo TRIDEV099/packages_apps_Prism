@@ -172,6 +172,7 @@
     <!-- Quick settings -->
     <string name="quick_settings_interface_category">Interface</string>
     <string name="quick_settings_lock_screen_category">Lock screen</string>
+    <string name="quick_settings_brightness_slider_category_title">Brightness slider</string>
 
     <!-- Compact QS Media Player-->
     <string name="qs_compact_media_player_mode_title">Compact QS media player</string>
@@ -284,4 +285,11 @@
     <string name="edge_light_animation_effect_sparkle">Sparkle</string>
     <string name="edge_light_animation_effect_chase">Chase</string>
     <string name="edge_light_animation_effect_comet">Comet</string>
+
+    <!-- QS Tiles Style -->
+    <string name="qs_tile_shape_title">QS tiles shape</string>
+    <string name="qs_tile_shape_dynamic">Dynamic</string>
+    <string name="qs_tile_shape_circle">Circle</string>
+    <string name="qs_tile_shape_rounded_square">Rounded square</string>
+    <string name="qs_tile_shape_square">Square</string>
 </resources>

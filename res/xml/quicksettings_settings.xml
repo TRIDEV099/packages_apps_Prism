@@ -28,6 +28,15 @@
             android:summary="@string/qs_compact_media_player_mode_summary"
             android:defaultValue="false" />
 
+
+        <!-- QS tile shape -->
+        <com.android.settings.preferences.SystemSettingListPreference
+            android:key="qs_tile_shape"
+            android:title="@string/qs_tile_shape_title"
+            android:entries="@array/qs_tile_shape_entries"
+            android:entryValues="@array/qs_tile_shape_values"
+            android:defaultValue="0" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

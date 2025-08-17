@@ -20,6 +20,7 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
 
 import com.prism.settings.utils.SystemUtils;
+import com.android.settings.preferences.SystemSettingListPreference;
 
 import java.util.List;
 
@@ -30,8 +31,10 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private static final String TAG = "QuickSettings";
 
     private static final String KEY_QS_COMPACT_PLAYER = "qs_compact_media_player_mode";
+    private static final String KEY_QS_TILE_SHAPE = "qs_tile_shape";
 
     private Preference mQsCompactPlayer;
+    private SystemSettingListPreference mQsTileShape;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             mQsCompactPlayer.setOnPreferenceChangeListener(this);
         }
 
+        mQsTileShape = findPreference(KEY_QS_TILE_SHAPE);
+        if (mQsTileShape != null) {
+            mQsTileShape.setOnPreferenceChangeListener(this);
+        }
+
         requireActivity().setTitle(R.string.prism_qs_dashboard_title);
     }
 
@@ -55,7 +63,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         final Context context = requireContext();
 
-        if (preference == mQsCompactPlayer) {
+        if (preference == mQsCompactPlayer
+         || preference == mQsTileShape) {
             SystemUtils.showSystemUiRestartDialog(context);
             return true;
         }
