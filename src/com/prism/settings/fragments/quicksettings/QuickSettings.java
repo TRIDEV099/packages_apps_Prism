@@ -32,9 +32,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
     private static final String KEY_QS_COMPACT_PLAYER = "qs_compact_media_player_mode";
     private static final String KEY_QS_TILE_SHAPE = "qs_tile_shape";
+    private static final String KEY_QS_BRIGHTNESS_SLIDER_SHAPE = "qs_brightness_slider_shape";
 
     private Preference mQsCompactPlayer;
     private SystemSettingListPreference mQsTileShape;
+    private SystemSettingListPreference mQsBrightnessSliderShape;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             mQsTileShape.setOnPreferenceChangeListener(this);
         }
 
+        mQsBrightnessSliderShape = findPreference(KEY_QS_BRIGHTNESS_SLIDER_SHAPE);
+        if (mQsBrightnessSliderShape != null) {
+            mQsBrightnessSliderShape.setOnPreferenceChangeListener(this);
+        }
+
         requireActivity().setTitle(R.string.prism_qs_dashboard_title);
     }
 
@@ -64,7 +71,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         final Context context = requireContext();
 
         if (preference == mQsCompactPlayer
-         || preference == mQsTileShape) {
+            || preference == mQsTileShape
+            || preference == mQsBrightnessSliderShape) {
             SystemUtils.showSystemUiRestartDialog(context);
             return true;
         }

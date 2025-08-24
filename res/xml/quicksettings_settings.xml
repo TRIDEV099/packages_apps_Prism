@@ -40,6 +40,18 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="quick_settings_brightness_slider_category_title"
+        android:title="@string/quick_settings_brightness_slider_category_title" >
+
+        <com.android.settings.preferences.SystemSettingListPreference
+            android:key="qs_brightness_slider_shape"
+            android:title="@string/qs_brightness_slider_shape_title"
+            android:entries="@array/qs_brightness_slider_shape_entries"
+            android:entryValues="@array/qs_brightness_slider_shape_values"
+            android:defaultValue="0" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="quick_settings_lock_screen_category"
         android:title="@string/quick_settings_lock_screen_category">
 
