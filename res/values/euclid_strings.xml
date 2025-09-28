@@ -165,8 +165,13 @@
 
     <!-- Quick settings -->
     <string name="quick_settings_interface_category">Interface</string>
+    <string name="quick_settings_lock_screen_category">Lock screen</string>
 
     <!-- Compact QS Media Player-->
     <string name="qs_compact_media_player_mode_title">Compact QS media player</string>
     <string name="qs_compact_media_player_mode_summary">Enable compact mode for QuickSettings media player</string>
+
+    <!-- Disable QS -->
+    <string name="quick_settings_secure_lock_screen_title">QS on lock screen</string>
+    <string name="quick_settings_secure_lock_screen_summary">Allow swipe down on lock screen to view Quick Settings</string>
 </resources>
