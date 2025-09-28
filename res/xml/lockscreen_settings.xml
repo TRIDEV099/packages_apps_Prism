@@ -22,6 +22,13 @@
            android:title="@string/wake_when_plugged_or_unplugged_title"
            android:summary="@string/wake_when_plugged_or_unplugged_summary"
            android:defaultValue="false" />
+
+       <!-- Lockscreen Media Art -->
+        <Preference
+            android:key="media_art_settings"
+            android:title="@string/ls_media_art_title"
+            android:summary="@string/ls_media_art_summary"
+            android:fragment="com.prism.settings.fragments.lockscreen.MediaArtSettings" />
     </PreferenceCategory>
 
     <PreferenceCategory
