@@ -17,6 +17,18 @@
             android:defaultValue="false" />
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="notifications_interface_category"
+        android:title="@string/notifications_interface_category">
+
+        <!-- Edge Light -->
+        <Preference
+            android:key="edge_light_settings"
+            android:title="@string/edge_light_title"
+            android:summary="@string/edge_light_summary"
+            android:fragment="com.prism.settings.fragments.system.EdgeLightSettings" />
+    </PreferenceCategory>
+
         <PreferenceCategory
             android:key="miscellaneous_spoofing_category"
             android:title="@string/miscellaneous_spoofing_category">
