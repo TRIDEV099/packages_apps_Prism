@@ -36,6 +36,14 @@
             android:title="@string/pulse_settings_title"
             android:summary="@string/pulse_settings_summary"
             android:fragment="com.prism.settings.fragments.lockscreen.PulseSettings" />
+
+        <!-- Now Playing -->
+        <Preference
+            android:key="nowplaying_settings"
+            android:title="@string/nowplaying_title"
+            android:summary="@string/nowplaying_summary"
+            android:fragment="com.prism.settings.fragments.lockscreen.NowplayingSettings" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
