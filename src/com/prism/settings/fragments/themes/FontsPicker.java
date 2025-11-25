@@ -21,6 +21,7 @@ import static com.android.internal.util.euclid.ThemeUtils.FONT_KEY;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -77,6 +78,19 @@ public class FontsPicker extends SettingsPreferenceFragment {
             mRecyclerView.setAdapter(null);
             mRecyclerView = null;
         }
+    }
+
+    @Override
+    public void setDivider(@Nullable final Drawable divider) {
+        RecyclerView list = getListView();
+        if (list == null) {
+            View root = getView();
+            if (root != null) {
+                root.post(() -> setDivider(divider));
+            }
+            return;
+        }
+        super.setDivider(divider);
     }
 
     @Override
