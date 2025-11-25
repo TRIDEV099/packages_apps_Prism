@@ -65,6 +65,13 @@
             android:summary="@string/spoofing_qsb_summary"
             android:defaultValue="false" />
 
+        <!-- Play Store -->
+        <com.android.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pp.finsky"
+            android:title="@string/spoofing_finsky_title"
+            android:summary="@string/spoofing_finsky_summary"
+            android:defaultValue="true" />
+
         <!-- Google Photos -->
         <com.android.settings.preferences.SystemPropertySwitchPreference
             android:key="persist.sys.pp.photos"

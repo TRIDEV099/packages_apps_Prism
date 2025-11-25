@@ -76,6 +76,7 @@ public class Spoofing extends SettingsPreferenceFragment implements
     private static final String SYS_PHOTOS_SPOOF = "persist.sys.pp.photos";
     private static final String SYS_QSB_SPOOF = "persist.sys.pp.qsb";
     private static final String SYS_TENSOR_SPOOF = "persist.sys.pp.tensor";
+    private static final String SYS_FINSKY_SPOOF = "persist.sys.pp.finsky";
     private static final String KEYBOX_DATA_KEY = "keybox_data_setting";
 
     private ActivityResultLauncher<Intent> mKeyboxFilePickerLauncher;
@@ -90,6 +91,7 @@ public class Spoofing extends SettingsPreferenceFragment implements
     private SystemPropertySwitchPreference mPhotosSpoof;
     private SystemPropertySwitchPreference mQsbSpoof;
     private SystemPropertySwitchPreference mTensorSpoof;
+    private SystemPropertySwitchPreference mFinskySpoof;
 
     private Handler mHandler;
 
@@ -113,6 +115,7 @@ public class Spoofing extends SettingsPreferenceFragment implements
         mGamePropsJsonFilePreference = findPreference(KEY_GAME_PROPS_JSON_FILE_PREFERENCE);
         mQsbSpoof = (SystemPropertySwitchPreference) findPreference(SYS_QSB_SPOOF);
         mTensorSpoof = (SystemPropertySwitchPreference) findPreference(SYS_TENSOR_SPOOF);
+        mFinskySpoof = (SystemPropertySwitchPreference) findPreference(SYS_FINSKY_SPOOF);
         mUpdateJsonButton = findPreference(KEY_UPDATE_JSON_BUTTON);
 
         String model = SystemProperties.get("ro.product.model");
@@ -136,6 +139,7 @@ public class Spoofing extends SettingsPreferenceFragment implements
         mGamesSpoof.setOnPreferenceChangeListener(this);
         mQsbSpoof.setOnPreferenceChangeListener(this);
         mTensorSpoof.setOnPreferenceChangeListener(this);
+        mFinskySpoof.setOnPreferenceChangeListener(this);
 
         mKeyboxFilePickerLauncher = registerForActivityResult(
         new ActivityResultContracts.StartActivityForResult(),
@@ -419,7 +423,8 @@ public class Spoofing extends SettingsPreferenceFragment implements
         final ContentResolver resolver = context.getContentResolver();
         if (preference == mGmsSpoof
             || preference == mPhotosSpoof
-            || preference == mQsbSpoof) {
+            || preference == mQsbSpoof
+            || preference == mFinskySpoof) {
             killGMSPackages();
             return true;
         }

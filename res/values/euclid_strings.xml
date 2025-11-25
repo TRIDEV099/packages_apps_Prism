@@ -48,6 +48,8 @@
     <string name="spoofing_app_specific_category">App-Specific</string>
     <string name="spoofing_qsb_title">Google app</string>
     <string name="spoofing_qsb_summary">Spoof the Google app to the latest Pixel device to unlock exclusive features</string>
+    <string name="spoofing_finsky_title">Play Store</string>
+    <string name="spoofing_finsky_summary">Spoof Play Store as Pif Pixel device\nWARNING: Disabling this option may break Play Integrity on your device.</string>
     <string name="spoofing_photos_title">Google Photos</string>
     <string name="spoofing_photos_summary">Spoof the Google Photos app as a Pixel XL</string>
     <string name="gameprops_title">Unlock higher FPS in games</string>
