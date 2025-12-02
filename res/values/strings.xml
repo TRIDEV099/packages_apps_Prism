@@ -43,4 +43,6 @@
     <string name="about_founders_title">Founders</string>
     <string name="about_founder_1_title" translatable="false">Mrick343</string>
     <string name="about_founder_1_summary" translatable="false">Founder / Lead Developer</string>
+    <string name="about_member_1_title" translatable="false">Zabuka Zuzu</string>
+    <string name="about_member_1_summary" translatable="false">Core Member</string>
 </resources>

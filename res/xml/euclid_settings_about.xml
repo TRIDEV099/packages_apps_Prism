@@ -50,5 +50,13 @@
                 android:action="android.intent.action.VIEW"
                 android:data="https://linktr.ee/Mrick343" />
         </Preference>
+    <!-- Core Member -->
+        <Preference
+            android:title="@string/about_member_1_title"
+            android:summary="@string/about_member_1_summary">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/yusufnoor786" />
+        </Preference>
 
 </PreferenceScreen>
