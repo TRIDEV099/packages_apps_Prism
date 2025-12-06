@@ -1,56 +1,64 @@
+/*
+ * Copyright (C) 2025 EuclidOS
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 package com.prism.settings.fragments.system;
 
-import com.android.internal.logging.nano.MetricsProto;
-
-import android.os.Bundle;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.os.UserHandle;
+import android.content.Context;
 import android.content.ContentResolver;
 import android.content.res.Resources;
-import androidx.preference.ListPreference;
+import android.os.Bundle;
+
 import androidx.preference.Preference;
-import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceScreen;
-import androidx.preference.PreferenceCategory;
-import androidx.preference.Preference.OnPreferenceChangeListener;
-import androidx.preference.PreferenceFragment;
-import androidx.preference.SwitchPreference;
-import android.provider.Settings;
+
+import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
-
-import java.util.Locale;
-import android.text.TextUtils;
-import android.view.View;
-
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.Utils;
-import android.util.Log;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settingslib.search.SearchIndexable;
 
 import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Collections;
 
-public class System extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
+@SearchIndexable
+public class System extends SettingsPreferenceFragment implements
+        Preference.OnPreferenceChangeListener {
+
+    private static final String TAG = "System";
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        addPreferencesFromResource(R.xml.system_settings);
+
+        final Context context = requireContext();
+        final ContentResolver resolver = context.getContentResolver();
+        final PreferenceScreen screen = getPreferenceScreen();
+        final Resources res = context.getResources();
+
+        requireActivity().setTitle(R.string.prism_system_dashboard_title);
+    }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        final Context context = requireContext();
+        final ContentResolver resolver = context.getContentResolver();
         return false;
     }
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.PRISM;
+        return MetricsEvent.PRISM;
     }
 
-    @Override
-    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        setPreferencesFromResource(R.xml.system_settings, rootKey);
-
-        getActivity().setTitle(R.string.prism_system_dashboard_title);
-
-    }
+    public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+        new BaseSearchIndexProvider(R.xml.system_settings) {
+            @Override
+            public List<String> getNonIndexableKeys(Context context) {
+                List<String> keys = super.getNonIndexableKeys(context);
+                final Resources res = context.getResources();
+                return keys;
+            }
+        };
 }
