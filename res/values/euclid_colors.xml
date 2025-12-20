@@ -17,4 +17,5 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <color name="option_border_default">#5f6368</color>
+    <color name="about_icon">#FFFFFF</color>
 </resources>
