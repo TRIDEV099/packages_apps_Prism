@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2025 euclidOS
+     SPDX-License-Identifier: Apache-2.0
+-->
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:title="@string/prism_spoofing_dashboard_title">
 
     <PreferenceCategory
         android:key="spoofing_system_wide_category"
         android:title="@string/spoofing_system_wide_category">
+
+        <!-- Keybox Data -->
+        <com.prism.settings.preferences.KeyboxDataPreference
+            android:key="keybox_data_setting"
+            android:title="@string/keybox_data_title" />
+
+        <!-- Vbmeta hash attestation -->
+        <com.android.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.vbmeta.update"
+            android:title="@string/vbmeta_attestation_title"
+            android:summary="@string/vbmeta_attestation_summary"
+            android:defaultValue="true" />
 
         <!-- GMS spoof -->
         <com.android.settings.preferences.SystemPropertySwitchPreference
@@ -47,30 +62,11 @@
             android:title="@string/tensor_spoof_title"
             android:summary="@string/tensor_spoof_summary"
             android:defaultValue="false" />
-
-        <!-- Keybox Data -->
-        <com.prism.settings.preferences.KeyboxDataPreference
-            android:key="keybox_data_setting"
-            android:title="@string/keybox_data_title" />
     </PreferenceCategory>
 
     <PreferenceCategory
         android:key="spoofing_app_specific_category"
         android:title="@string/spoofing_app_specific_category">
-
-        <!-- Google App -->
-        <com.android.settings.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pp.qsb"
-            android:title="@string/spoofing_qsb_title"
-            android:summary="@string/spoofing_qsb_summary"
-            android:defaultValue="false" />
-
-        <!-- Play Store -->
-        <com.android.settings.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pp.finsky"
-            android:title="@string/spoofing_finsky_title"
-            android:summary="@string/spoofing_finsky_summary"
-            android:defaultValue="true" />
 
         <!-- Google Photos -->
         <com.android.settings.preferences.SystemPropertySwitchPreference
@@ -81,14 +77,21 @@
 
         <!-- Games FPS -->
         <com.android.settings.preferences.SystemPropertySwitchPreference
-            android:key="persist.sys.pp.games"
+            android:key="persist.sys.gameprops.enabled"
             android:title="@string/gameprops_title"
             android:summary="@string/gameprops_summary"
-            android:defaultValue="true" />
-
+            android:defaultValue="false" />
+            
         <Preference
             android:key="game_props_json_file_preference"
             android:title="@string/gameprops_load_json_title"
             android:summary="@string/gameprops_load_json_summary" />
+
+        <!-- Snapchat -->
+        <com.android.settings.preferences.SystemPropertySwitchPreference
+            android:key="persist.sys.pp.snapchat"
+            android:title="@string/spoofing_snap_title"
+            android:summary="@string/spoofing_snap_summary"
+            android:defaultValue="false" />
     </PreferenceCategory>
 </PreferenceScreen>
