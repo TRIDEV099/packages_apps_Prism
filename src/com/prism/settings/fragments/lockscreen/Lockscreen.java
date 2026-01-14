@@ -21,6 +21,7 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
+import com.android.internal.util.euclid.OmniJawsClient;
 
 import java.util.List;
 
@@ -32,8 +33,11 @@ public class Lockscreen extends SettingsPreferenceFragment implements
     private static final String KEY_FINGERPRINT_CATEGORY = "lock_screen_fingerprint_category";
     private static final String KEY_AUTHENTICATION_SUCCESS = "fp_success_vibrate";
     private static final String KEY_AUTHENTICATION_ERROR = "fp_error_vibrate";
+    private static final String KEY_WEATHER = "lockscreen_weather_enabled";
 
     private PreferenceCategory mFingerprintCategory;
+    private Preference mWeather;
+    private OmniJawsClient mWeatherClient;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,10 @@ public class Lockscreen extends SettingsPreferenceFragment implements
             prefScreen.removePreference(mFingerprintCategory);
         }
 
+        mWeather = findPreference(KEY_WEATHER);
+        mWeatherClient = new OmniJawsClient(context);
+        updateWeatherSettings();
+
         requireActivity().setTitle(R.string.prism_lockscreen_dashboard_title);
     }
 
@@ -61,6 +69,22 @@ public class Lockscreen extends SettingsPreferenceFragment implements
         final Context context = requireContext();
         final ContentResolver resolver = context.getContentResolver();
         return false;
+    }
+
+    private void updateWeatherSettings() {
+        if (mWeatherClient == null || mWeather == null) return;
+
+        boolean weatherEnabled = mWeatherClient.isOmniJawsEnabled();
+        mWeather.setEnabled(weatherEnabled);
+        mWeather.setSummary(weatherEnabled
+                ? R.string.lockscreen_weather_summary
+                : R.string.lockscreen_weather_enabled_info);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateWeatherSettings();
     }
 
     @Override
