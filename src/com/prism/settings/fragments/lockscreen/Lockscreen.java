@@ -37,7 +37,6 @@ public class Lockscreen extends SettingsPreferenceFragment implements
 
     private PreferenceCategory mFingerprintCategory;
     private Preference mWeather;
-    private OmniJawsClient mWeatherClient;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,7 +57,6 @@ public class Lockscreen extends SettingsPreferenceFragment implements
         }
 
         mWeather = findPreference(KEY_WEATHER);
-        mWeatherClient = new OmniJawsClient(context);
         updateWeatherSettings();
 
         requireActivity().setTitle(R.string.prism_lockscreen_dashboard_title);
@@ -72,9 +70,9 @@ public class Lockscreen extends SettingsPreferenceFragment implements
     }
 
     private void updateWeatherSettings() {
-        if (mWeatherClient == null || mWeather == null) return;
+        if (mWeather == null) return;
 
-        boolean weatherEnabled = mWeatherClient.isOmniJawsEnabled();
+        boolean weatherEnabled = OmniJawsClient.get().isOmniJawsEnabled(getContext());
         mWeather.setEnabled(weatherEnabled);
         mWeather.setSummary(weatherEnabled
                 ? R.string.lockscreen_weather_summary
