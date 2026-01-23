@@ -18,6 +18,23 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="floating_sidebar_category"
+        android:title="@string/floating_sidebar_category">
+
+    <!-- Sidebar -->
+        <Preference
+            android:key="floating_sidebar"
+            android:title="@string/sidebar_title"
+            android:summary="@string/sidebar_summary">
+
+             <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="com.libremobileos.sidebar"
+                android:targetClass="com.libremobileos.sidebar.ui.sidebar.SidebarSettingsActivity" />
+         </Preference>
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="notifications_interface_category"
         android:title="@string/notifications_interface_category">
 
@@ -103,4 +120,5 @@
             android:summary="@string/miscellaneous_unlimit_screenrecord_summary"
             android:defaultValue="false" />
     </PreferenceCategory>     
+       
 </PreferenceScreen>
