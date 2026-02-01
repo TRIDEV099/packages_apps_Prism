@@ -1,6 +1,6 @@
 package com.prism.settings.fragments.spoofing;
 
- import android.app.Activity;
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.content.ContentResolver;
@@ -75,7 +75,6 @@ public class Spoofing extends SettingsPreferenceFragment implements
     private static final String SYS_GAMEPROP_ENABLED = "persist.sys.gameprops.enabled";
     private static final String SYS_PHOTOS_SPOOF = "persist.sys.pp.photos";
     private static final String SYS_SNAPCHAT_SPOOF = "persist.sys.pp.snapchat";
-    private static final String SYS_TENSOR_SPOOF = "persist.sys.pp.tensor";
     private static final String KEYBOX_DATA_KEY = "keybox_data_setting";
 
     private ActivityResultLauncher<Intent> mKeyboxFilePickerLauncher;
@@ -89,7 +88,6 @@ public class Spoofing extends SettingsPreferenceFragment implements
     private SystemPropertySwitchPreference mGamePropsEnabled;
     private SystemPropertySwitchPreference mPhotosSpoof;
     private SystemPropertySwitchPreference mSnapchatSpoof;
-    private SystemPropertySwitchPreference mTensorSpoof;
 
     private Handler mHandler;
 
@@ -112,7 +110,6 @@ public class Spoofing extends SettingsPreferenceFragment implements
         mPifJsonFilePreference = findPreference(KEY_PIF_JSON_FILE_PREFERENCE);
         mGamePropsJsonFilePreference = findPreference(KEY_GAME_PROPS_JSON_FILE_PREFERENCE);
         mSnapchatSpoof = (SystemPropertySwitchPreference) findPreference(SYS_SNAPCHAT_SPOOF);
-        mTensorSpoof = (SystemPropertySwitchPreference) findPreference(SYS_TENSOR_SPOOF);
         mUpdateJsonButton = findPreference(KEY_UPDATE_JSON_BUTTON);
 
         String model = SystemProperties.get("ro.product.model");
@@ -126,10 +123,6 @@ public class Spoofing extends SettingsPreferenceFragment implements
             }
         }
 
-        if (isTensorDevice) {
-            mSystemWideCategory.removePreference(mTensorSpoof);
-        }
-
         mGmsSpoof.setOnPreferenceChangeListener(this);
         mGoogleSpoof.setOnPreferenceChangeListener(this);
         mPhotosSpoof.setOnPreferenceChangeListener(this);
@@ -137,7 +130,6 @@ public class Spoofing extends SettingsPreferenceFragment implements
             mGamePropsEnabled.setOnPreferenceChangeListener(this);
         }
         mSnapchatSpoof.setOnPreferenceChangeListener(this);
-        mTensorSpoof.setOnPreferenceChangeListener(this);
 
         mKeyboxFilePickerLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -385,12 +377,6 @@ public class Spoofing extends SettingsPreferenceFragment implements
         }
         if (preference == mGoogleSpoof
             || preference == mGamePropsEnabled) {
-            SystemRestartUtils.showSystemRestartDialog(getContext());
-            return true;
-        }
-        if (preference == mTensorSpoof) {
-            boolean enabled = (Boolean) newValue;
-            SystemProperties.set(SYS_TENSOR_SPOOF, enabled ? "true" : "false");
             SystemRestartUtils.showSystemRestartDialog(getContext());
             return true;
         }
